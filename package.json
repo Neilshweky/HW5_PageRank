@@ -19,9 +19,12 @@
   "homepage": "https://github.com/Neilshweky/HW5_PageRank#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "extract-domain": "^2.2.1",
     "fs": "0.0.1-security",
+    "psl": "^1.8.0",
     "queue-fifo": "^0.2.6",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "valid-url": "^1.0.9"
   }
 }
