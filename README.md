@@ -4,7 +4,7 @@
 **Neil Shweky:** nshweky@seas.upenn.edu   
 **Joan Shaho:** jshaho@seas.upenn.edu
 
-## Our Team
+## Idea
 Our idea is to do our own version of PageRank on a much smaller scale. The project involves starting from a “base” website, and searching for any links contained on the webpage. We’ll then record those links on the base webpage as an edge from the base to that link, and repeat this process from all of those links. Once we have the full graph of webpages and outgoing edges, we’ll perform the PageRank algorithm on the graph to find the importance of each webpage in the network. We were also thinking of possibly making the initial website a user input so that the user can explore part of the internet.
 
 We do realize that this graph could get EXTREMELY large, so we’ve decided to cap the number of degrees a website can get from the base website. This will make the graph a manageable size, while also giving us a pretty good representation of the importance of a website within a smaller network.
