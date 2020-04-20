@@ -129,8 +129,17 @@ sweetgreen.com	instagram.com
 sweetgreen.com	youtube.com
 sweetgreen.com	wck.org
 sweetgreen.com	youtu.be
+sweetgreen.com	apple.com
 sweetgreen.com	google.com
 sweetgreen.com	amazonaws.com
+worldcafelive.com	wordpress.com
+worldcafelive.com	mightycause.com
+worldcafelive.com	ticketfly.com
+worldcafelive.com	facebook.com
+worldcafelive.com	twitter.com
+worldcafelive.com	instagram.com
+worldcafelive.com	wlcr.io
+worldcafelive.com	eventbrite.com
 pennbookcenter.com	twitter.com
 pennbookcenter.com	facebook.com
 pennbookcenter.com	instagram.com
