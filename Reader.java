@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,16 +34,12 @@ public class Reader {
             if (!index.containsKey(node1)) {
                 index.put(node1, currInd);
                 invIndex.put(currInd, node1);
-//                System.out.print(currInd + " ");
-//                System.out.println(node1);
                 currInd++;
             }
             
             if (!index.containsKey(node2)) {
                 index.put(node2, currInd);
                 invIndex.put(currInd, node2);
-//                System.out.print(currInd + " ");
-//                System.out.println(node2);
                 currInd++;
             }            
             line = br.readLine();
@@ -80,8 +78,17 @@ public class Reader {
     public static void main(String[] args) throws IOException {
         Graph g = readFile("edge_list.txt");
         Map <Integer, Double> ranks = g.pageRank();
-        for (int i = 0; i < g.getSize(); i++) {
-            System.out.println(invIndex.get(i) + " : " + ranks.get(i));
-        }
+        Object[] a = ranks.values().toArray();
+        Arrays.sort(a);
+        // print the ranks in descending order
+        for (int i = a.length - 1; i >= 0; i--) {
+          for (int j = 0; j < g.getSize(); j++) {
+              if (ranks.get(j) == a[i]) {
+                  System.out.println(invIndex.get(j) + " : " + (double) a[i]);
+                  ranks.remove(j);
+                  break;
+              }
+          }
+      }
     }
 }

@@ -126,16 +126,21 @@ public class Graph {
         Map<Integer, Double> ranks = new HashMap<Integer, Double>();
         Map<Integer, Double> prevRanks = new HashMap<Integer, Double>();
         Map<Integer, Double> rankDiff = new HashMap<Integer, Double>();
+        
+        // initialize the rank values
         for (int i = 0; i < this.size; i++) {
             ranks.put(i, 1.0 / this.size);
             prevRanks.put(i, 1.0 / this.size);
         }
         
+        // initialize the rank-difference values
         for (int i = 0; i < this.size; i++) {
             rankDiff.put(i, 0.0);
         }
         
+        
         do {
+            // compute the the change of each rank
             for (int i = 0; i < this.size; i++) {
                 int numNeighbors = this.adjacencyList.get(i).size();
                 for (int neighbor : this.adjacencyList.get(i)) {
@@ -144,6 +149,7 @@ public class Graph {
                 }
             }
             
+            // apply the change on each node's rank
             for (int i = 0; i < this.size; i++) {
                 int numNeighbors = this.adjacencyList.get(i).size();
                 prevRanks.put(i, ranks.get(i));
@@ -154,6 +160,7 @@ public class Graph {
                 }
             }
             
+            // reset the changes to zero
             for (int i = 0; i < this.size; i++) {
                 rankDiff.put(i, 0.0);
             }
@@ -161,6 +168,12 @@ public class Graph {
         return ranks;
     }
     
+    /**
+     * Method for checking how much the pagerank values of each node have changed
+     * @param prevRanks, the previous ranks of each node
+     * @param ranks, the current ranks of each node
+     * @return the average of the differences between the previous and current ranks
+     */
     private double computeDiff(Map<Integer, Double> prevRanks, Map<Integer, Double> ranks) {
         double avg = 0.0;
         for (int i = 0; i < this.size; i++) {
