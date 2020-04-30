@@ -1,0 +1,3 @@
+google.com	youtube.com
+google.com	blogger.com
+youtube.com	google.com
