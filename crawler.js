@@ -6,9 +6,9 @@ const extractDomain = require('extract-domain');
 const validUrl = require('valid-url');
 
 var Queue = require('queue-fifo');
+let edgeList = "";
 
 const cheerioify = uri => request({ uri, transform: cheerio.load })
-let edgeList = "";
 
 const crawl = async function(url) {
   let max_distance = 0;
@@ -64,10 +64,10 @@ const crawlSite = async function(url) {
 const addToEdgeList = (url, urls) => edgeList = [...urls].reduce((acc, current) => `${acc}${url}\t${current}\n`, edgeList)
 
 const writeToFile = () => {
-  fs.writeFile('edge_list.txt', edgeList, function(err) {
+  fs.writeFile('edge_list_piazza.txt', edgeList, function(err) {
     if(err) console.log(err)
     else console.log('done')
   })
 }
 
-crawl('https://www.upenn.edu').then(() => console.log(edgeList))
+crawl('https://piazza.com/').then(() => console.log(edgeList))
