@@ -164,7 +164,9 @@ public class Graph {
             for (int i = 0; i < this.size; i++) {
                 rankDiff.put(i, 0.0);
             }
-        } while (computeDiff(prevRanks, ranks) >= 0.00001);
+        } while (computeDiff(prevRanks, ranks) >= 0.00001);         // repeat loop for as long as 
+                                                                    // the ranks differ by more 
+                                                                    // than 0.00001 
         return ranks;
     }
     

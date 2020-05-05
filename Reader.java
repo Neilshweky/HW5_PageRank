@@ -12,6 +12,7 @@ import java.util.Map;
 public class Reader {    
     static Map<Integer, String> invIndex = new HashMap<Integer, String>();
     
+    
     /**  Read lines from a file with graph edges where each edge is a pair of nodes (represented 
      *   as integers) with a space between them
      */    
@@ -76,19 +77,60 @@ public class Reader {
     }
     
     public static void main(String[] args) throws IOException {
-        Graph g = readFile("edge_list.txt");
+        Graph g1 = readFile("edge_list.txt");
+        Map<Integer, String> upennInvIndex = new HashMap<Integer, String>();
+        upennInvIndex.putAll(invIndex);
+        
+        Graph g2 = readFile("edge_list_google.txt");
+        Map<Integer, String> googleInvIndex = new HashMap<Integer, String>();
+        googleInvIndex.putAll(invIndex);
+        
+        Graph g3 = readFile("edge_list_piazza.txt");
+        Map<Integer, String> piazzaInvIndex = new HashMap<Integer, String>();
+        piazzaInvIndex.putAll(invIndex);
+        
+        Graph g4 = readFile("edge_list_spotify.txt");
+        Map<Integer, String> spotifyInvIndex = new HashMap<Integer, String>();
+        spotifyInvIndex.putAll(invIndex);
+        
+        Graph g5 = readFile("edge_list_usgov_corona.txt");
+        Map<Integer, String> usgovInvIndex = new HashMap<Integer, String>();
+        usgovInvIndex.putAll(invIndex);
+        
+        printRanks(g1, upennInvIndex);
+        System.out.println();
+        
+        printRanks(g2, googleInvIndex);
+        System.out.println();
+        
+        printRanks(g3, piazzaInvIndex);
+        System.out.println();
+        
+        printRanks(g4, spotifyInvIndex);
+        System.out.println();
+        
+        printRanks(g5, usgovInvIndex);
+        System.out.println();
+    }
+    
+    /**
+     * Method for printing the ranks of an input graph in decreasing order
+     * @param g, the input graph
+     * @param invIndex, a mapping of each node index in g to the nodes url
+     */
+    private static void printRanks(Graph g, Map<Integer, String> invIndex) {
         Map <Integer, Double> ranks = g.pageRank();
-        Object[] a = ranks.values().toArray();
-        Arrays.sort(a);
+        Object[] arr = ranks.values().toArray();
+        Arrays.sort(arr);
         // print the ranks in descending order
-        for (int i = a.length - 1; i >= 0; i--) {
+        for (int i = arr.length - 1; i >= 0; i--) {
           for (int j = 0; j < g.getSize(); j++) {
-              if (ranks.get(j) == a[i]) {
-                  System.out.println(invIndex.get(j) + " : " + (double) a[i]);
+              if (ranks.get(j) == arr[i]) {
+                  System.out.println(invIndex.get(j) + " : " + (double) arr[i]);
                   ranks.remove(j);
                   break;
               }
           }
-      }
+        }
     }
 }
